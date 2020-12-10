@@ -1,0 +1,17 @@
+main {
+  display: flex;
+  flex-direction: column;
+}
+
+ul, li {
+  list-style-type: none;
+}
+
+a:link {
+  text-decoration: none;
+  color: black;
+}
+
+a:visited {
+  text-decoration: none;
+}
