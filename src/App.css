@@ -1,10 +1,62 @@
+@import url('https://fonts.googleapis.com/css2?family=Domine:wght@700&family=Raleway:wght@500&display=swap');
+
+html, body {
+  max-height: 100vh;
+}
+
 main {
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
+  background-color: #EEF5DB;
+}
+
+.App_header{
+  flex: 4;
+  text-align: center;
+  background-color: #9B6A6C;
+  padding: 2px;
+  background-size: auto;
+  color: white;
+}
+
+.folderSection {
+  flex: 1;
+  background-color: #B09398;
+}
+
+.noteSection {
+  flex: 2;
+}
+
+h1 {
+font-family: 'Domine', serif;
+font-size: 2.4rem;
+}
+
+h2 {
+  font-family: 'Raleway', sans-serif;
+  font-size: 2rem;
+}
+
+h3 {
+  font-family: 'Raleway', sans-serif;
+  font-size: 1.85rem;
+}
+
+p {
+  font-family: 'Raleway', sans-serif;
+  font-size: 1.6rem;
 }
 
 ul, li {
+  font-family: 'Raleway', sans-serif;
+  font-size: 1.6rem;
   list-style-type: none;
+  padding-left: 0;
+}
+
+.center {
+  text-align: center;
 }
 
 a:link {
