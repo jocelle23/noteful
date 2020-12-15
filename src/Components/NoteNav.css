@@ -1,0 +1,12 @@
+.backBtn {
+    margin: 40px auto 20px 40%;
+    color: black;
+    border: 5px inset #68171fa2;
+    border-radius: 3px;
+    background-color:#0518423f;
+}
+
+.folderName {
+    text-align: right;
+    margin-right: 20px;
+}

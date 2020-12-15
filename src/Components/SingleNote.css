@@ -1,0 +1,13 @@
+.noteContents {
+    padding: 6%;
+    margin: 10px auto;
+}
+
+.removeBtn2 {
+    float: left;
+    color: black;
+    margin: 10px 47% 40px 47%;
+    border: 5px inset #68171fa2;
+    border-radius: 3px;
+    background-color:#0518423f;
+}
