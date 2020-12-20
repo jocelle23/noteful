@@ -1,6 +1,7 @@
 import React from 'react';
 import APIContext from '../APIContext';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import './SingleNote.css';
 
 export default class SingleNote extends React.Component {
@@ -35,20 +36,29 @@ export default class SingleNote extends React.Component {
     }
 
     render() {
+        
         return (
             <div>
                 <Link to={`/note${this.props.id}`}>
                     <h2 className="center">{this.props.name}</h2>
                 </Link>
                 <p className="noteContents">{this.props.content}</p>
-                <button 
-                type="button"
-                className="removeBtn2"
-                onClick={this.deleteButton}
+                <button
+                    type="button"
+                    className="removeBtn2"
+                    onClick={this.deleteButton}
                 >
                     <b>REMOVE</b>
-            </button>
+                </button>
             </div>
         )
     }
 }
+
+SingleNote.propType = {
+    name: PropTypes.string.isRequired,
+    content: PropTypes.string.isRequired, 
+    name: PropTypes.string.isRequired,
+    id: PropTypes.string.isRequired,
+    onDeleteNote: PropTypes.object,
+};

@@ -1,6 +1,7 @@
 import React from 'react';
 import APIContext from '../APIContext';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import './Note.css'
 
 export default class Note extends React.Component {
@@ -52,3 +53,8 @@ export default class Note extends React.Component {
         )
     }
 }
+
+Note.propType = {
+    name: PropTypes.string.isRequired,
+    id: PropTypes.string.isRequired
+};
