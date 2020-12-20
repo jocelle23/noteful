@@ -9,7 +9,7 @@ import NoteNav from './Components/NoteNav';
 import AddFolder from './Components/AddFolder';
 import AddNote from './Components/AddNote';
 import APIContext from './APIContext';
-import ErrorBoundary from './Components/ErrorHandlers/ErrorBoundary';
+import ErrorBoundary from './ErrorHandlers/ErrorBoundary';
 
 export default class App extends Component {
   constructor(props) {
