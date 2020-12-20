@@ -1,6 +1,6 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
-import NavBar from '../NavBar';
+import NavBar from '../Components/NavBar';
 import PropTypes from 'prop-types';
 
 export default class ErrorBoundary extends React.Component {
