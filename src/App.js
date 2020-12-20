@@ -6,12 +6,18 @@ import NavBar from './Components/NavBar';
 import NoteList from './Components/NoteList';
 import NoteView from './Components/NoteView';
 import NoteNav from './Components/NoteNav';
+import AddFolder from './Components/AddFolder';
+import AddNote from './Components/AddNote';
 import APIContext from './APIContext';
+import ErrorBoundary from './Components/ErrorHandlers/ErrorBoundary';
 
 export default class App extends Component {
-  state = {
-    notes: [],
-    folders: []
+  constructor(props) {
+    super(props);
+    this.state = {
+      notes: [],
+      folders: []
+    };
   }
 
   componentDidMount() {
@@ -57,10 +63,29 @@ export default class App extends Component {
 
   deleteItem = (noteId) => {
     const filterState = this.state.notes.filter(note => {
-      return note.id === noteId;
+      return note.id !== noteId;
     })
     this.setState({
       notes: filterState
+    })
+    console.log(filterState, noteId)
+  }
+
+  handleAddFolder = folder => {
+    this.setState({
+      folders: [
+        ...this.state.folders,
+        folder
+      ]
+    })
+  }
+
+  handleAddNote = note => {
+    this.setState({
+      notes: [
+        ...this.state.notes,
+        note
+      ]
     })
   }
 
@@ -68,7 +93,9 @@ export default class App extends Component {
     const contextValue = {
       notes: this.state.notes,
       folders: this.state.folders,
-      deleteItem: this.deleteItem
+      deleteItem: this.deleteItem,
+      addFolder: this.handleAddFolder,
+      addNote: this.handleAddNote
     }
 
     return (
@@ -83,14 +110,13 @@ export default class App extends Component {
           <main>
             <section className="folderSection">
               <aside>
-                <Route
-                  exact path="/"
-                  component={NavBar}
-                />
-                <Route
-                  exact path="/folder/:folderId"
-                  component={NavBar}
-                />
+                {["/", "/folder/:folderId"].map(path => (
+                  <Route
+                    exact key={path}
+                    path={path}
+                    component={NavBar}
+                  />
+                ))}
                 <Route
                   exact path="/note/:noteId"
                   component={NoteNav}
@@ -99,18 +125,29 @@ export default class App extends Component {
             </section>
 
             <section className="noteSection">
-              <Route
-                exact path="/"
-                component={NoteList}
-              />
-              <Route
-                exact path="/folder/:folderId"
-                component={NoteList}
-              />
+              <ErrorBoundary>
+              {["/", "/folder/:folderId"].map(path => (
+                <Route
+                  exact key={path}
+                  path={path}
+                  component={NoteList}
+                />
+              ))}
+              </ErrorBoundary>
+              <ErrorBoundary>
               <Route
                 exact path="/note/:noteId"
                 component={NoteView}
               />
+              </ErrorBoundary>
+              <Route
+                  path='/add-folder'
+                  component={AddFolder}
+                />
+                <Route
+                  path='/add-note'
+                  component={AddNote}
+                />
             </section>
           </main>
         </APIContext.Provider>
