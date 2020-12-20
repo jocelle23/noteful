@@ -2,12 +2,13 @@
 
 html, body {
   max-height: 100vh;
+  background-color: #EEF5DB;
 }
 
 main {
   display: flex;
   flex-wrap: wrap;
-  background-color: #EEF5DB;
+  height: 100vh;
 }
 
 .App_header{
