@@ -13,7 +13,9 @@ export default class AddNote extends React.Component {
         titleValid: false,
         contentValid: false,
         folderSelectValid: false,
-        validationMessage: null
+        validationMessage: null,
+        forErrors: this.props.match,
+        toggle: true
     };
 
     static contextType = APIContext;
@@ -130,6 +132,15 @@ export default class AddNote extends React.Component {
                 </option>
             )
         })
+        
+        if(this.state.toggle === false) {
+            this.setState({
+              forErrors: 'err'
+            })
+            this.setState({
+              forErrors: this.props.match
+            })
+          }
 
         return (
             <form
@@ -142,9 +153,10 @@ export default class AddNote extends React.Component {
                         type="text"
                         name="title"
                         id="title"
-                        aria-label="Title"
+                        aria-label="Note Title"
                         aria-required="true"
                         placeholder="Note Title"
+                        aria-placeholder="Note Title"
                         onChange={e => this.updateFormEntry(e)} />
                 </div>
                 <div className="form-group">
@@ -152,7 +164,7 @@ export default class AddNote extends React.Component {
                     <textarea
                         name="content"
                         id="content"
-                        aria-label="Note:"
+                        aria-label="Note content:"
                         aria-required="false"
                         onChange={e => this.updateFormEntry(e)} />
                 </div>

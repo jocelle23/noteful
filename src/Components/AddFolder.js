@@ -108,6 +108,8 @@ export default class AddFolder extends React.Component {
                     type="text" 
                     name="title" 
                     id="title" 
+                    aria-label="Folder Title"
+                    aria-required="true"
                     placeholder="Folder Title"
                     aria-placeholder="Folder Title"
                     onChange={e => this.updateFormEntry(e)}/>
