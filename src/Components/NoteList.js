@@ -28,8 +28,8 @@ export default class NoteList extends React.Component {
         }
 
         return (
-            <nav>
-                <ul>
+            <section>
+                <div>
                     {notesMap.map(note =>
                         <Note
                             key={note.id}
@@ -40,11 +40,11 @@ export default class NoteList extends React.Component {
                             content={note.content}
                         />
                     )}
-                </ul>
+                </div>
                 <Link to='/add-note'>
                     <b className="addNoteBtn">ADD NOTE</b>
                 </Link>
-            </nav>
+            </section>
         )
     }
 }

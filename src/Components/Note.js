@@ -33,22 +33,20 @@ export default class Note extends React.Component {
 
     render() {
         return (
-            <div>
-                <li
-                    key={this.props.id}
-                    className="notesList"
+            <div
+                key={this.props.id}
+                className="notesList"
+            >
+                <Link to={`/note/${this.props.id}`}>
+                    {this.props.name}
+                </Link>
+                <button
+                    type="button"
+                    onClick={this.deleteButton}
+                    className="removeBtn"
                 >
-                    <Link to={`/note/${this.props.id}`}>
-                        {this.props.name}
-                    </Link>
-                    <button
-                        type="button"
-                        onClick={this.deleteButton}
-                        className="removeBtn"
-                    >
-                        <b>REMOVE</b>
-                    </button>
-                </li>
+                    <b>REMOVE</b>
+                </button>
             </div>
         )
     }
