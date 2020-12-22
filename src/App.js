@@ -109,45 +109,43 @@ export default class App extends Component {
 
           <main>
             <section className="folderSection">
-              <aside>
-                {["/", "/folder/:folderId"].map(path => (
-                  <Route
-                    exact key={path}
-                    path={path}
-                    component={NavBar}
-                  />
-                ))}
-                <Route
-                  exact path="/note/:noteId"
-                  component={NoteNav}
-                />
-              </aside>
-            </section>
-
-            <section className="noteSection">
-              <ErrorBoundary>
               {["/", "/folder/:folderId"].map(path => (
                 <Route
                   exact key={path}
                   path={path}
-                  component={NoteList}
+                  component={NavBar}
                 />
               ))}
-              </ErrorBoundary>
-              <ErrorBoundary>
               <Route
                 exact path="/note/:noteId"
-                component={NoteView}
+                component={NoteNav}
               />
+            </section>
+
+            <section className="noteSection">
+              <ErrorBoundary>
+                {["/", "/folder/:folderId"].map(path => (
+                  <Route
+                    exact key={path}
+                    path={path}
+                    component={NoteList}
+                  />
+                ))}
+              </ErrorBoundary>
+              <ErrorBoundary>
+                <Route
+                  exact path="/note/:noteId"
+                  component={NoteView}
+                />
               </ErrorBoundary>
               <Route
-                  path='/add-folder'
-                  component={AddFolder}
-                />
-                <Route
-                  path='/add-note'
-                  component={AddNote}
-                />
+                path='/add-folder'
+                component={AddFolder}
+              />
+              <Route
+                path='/add-note'
+                component={AddNote}
+              />
             </section>
           </main>
         </APIContext.Provider>
